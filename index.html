@@ -84,6 +84,9 @@
     };
 
     function handleInput(x, y) {
+        if (audioCtx && audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
         if (gameState !== 'Manual') return;
         ringNodes.forEach((n) => {
             if(Math.hypot(x - n.x, y - n.y) < 70) {
